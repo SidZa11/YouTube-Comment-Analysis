@@ -15,12 +15,14 @@ import getVideoInformation from '../api/getVideoInformation';
 import VideoInfoContext from '../context/VideoInfoContext';
 import getVideoStatistics from '../api/getVideoStatistics';
 import VideoStatContext from '../context/VideoStatContext';
+import RefreshAnalyticContext from '../context/RefreshAnalyticsContext';
 
 
 const SearchBar = () => {
     const {setCommentData} = useContext(CommentDataContext)
     const{setVideoInfo} = useContext(VideoInfoContext)
     const{setVideoStat} = useContext(VideoStatContext)
+    const {setRefreshValue} = useContext(RefreshAnalyticContext)
     var comment_value;
     var info_value;
     var stat_value;
@@ -34,6 +36,8 @@ const SearchBar = () => {
 
             comment_value = await getCommentsData(videoId, key);            
             setCommentData(comment_value)
+
+            setRefreshValue(0)
         } catch (error) {
             console.error('Error fetching comments data:', error);
         }
@@ -43,7 +47,7 @@ const SearchBar = () => {
         var url = document.getElementById('url').value;
         if (url.substring(0, 17) === "https://youtu.be/") {
             video_id = url.split("/")[3].substring(0,11);
-            var key="api-key";
+            var key="API_KEY";
             swal("Good Job", "Request Sent to the Server.", "success")
             await fetchData(video_id, key)
         }

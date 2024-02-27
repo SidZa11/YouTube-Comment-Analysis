@@ -7,6 +7,8 @@ import CommentDataContext from '../context/CommentDataContext'
 import Statistics from '../components/Statistics'
 import VideoInfoContext from '../context/VideoInfoContext'
 import VideoStatContext from '../context/VideoStatContext'
+import WordCountGraph from '../charts/WordCountGraph'
+import RefreshAnalyticContext from '../context/RefreshAnalyticsContext'
 
 
 const Analytics = () => {
@@ -14,15 +16,19 @@ const Analytics = () => {
 const [commentData, setCommentData] = useState([])
 const [videoInfo, setVideoInfo] = useState({})
 const [videoStat, setVideoStat] = useState({})
+const [refreshValue, setRefreshValue] = useState(1)
 
   return (
     <Layout>
         <CommentDataContext.Provider value={{commentData, setCommentData}} >
           <VideoInfoContext.Provider value={{videoInfo, setVideoInfo}}>
             <VideoStatContext.Provider value={{videoStat, setVideoStat}}>
-              <StepToSearch/>
-              <Statistics />
-              <SimpleBarGraph/>
+              <RefreshAnalyticContext.Provider value={{refreshValue, setRefreshValue}}>
+                <StepToSearch/>
+                <Statistics />
+                <SimpleBarGraph/>
+                <WordCountGraph />
+              </RefreshAnalyticContext.Provider>
             </VideoStatContext.Provider>
           </VideoInfoContext.Provider>
         </CommentDataContext.Provider>

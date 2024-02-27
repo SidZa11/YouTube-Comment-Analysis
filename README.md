@@ -2,7 +2,7 @@
 # YouTube-Comment-Analysis
 Fetching comments from youtube api and get the data to analysis the comments.
 
-Remember to amke an API key.
+Remember to make an API key.
 You can use API key from google for free.
 =======
 # Getting Started with Create React App
@@ -76,3 +76,10 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
 >>>>>>> f4129d3 (Initial commit by zakir)
+
+
+
+
+
+
+

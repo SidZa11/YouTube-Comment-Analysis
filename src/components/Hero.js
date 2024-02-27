@@ -10,7 +10,7 @@ import {
   Icon,
   IconButton,
   createIcon,
-  useColorModeValue
+
 } from "@chakra-ui/react"
 import Carousel from "./Carousel"
 import CarouselData from "../data/CarouselData"

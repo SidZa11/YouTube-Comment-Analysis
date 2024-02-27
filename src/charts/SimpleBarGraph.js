@@ -7,6 +7,7 @@ const colors = ['#008FFB', '#00E396', '#FEB019', '#FF4560', '#775DD0', '#546E7A'
 const SimpleBarGraph = () => {
 const {commentData} = useContext(CommentDataContext);
 var data = []
+
 if(commentData != null){
 var publishedATString = []
 var publishedATDate;
@@ -27,11 +28,11 @@ for(var i=0; i<12; i++) { month.push(Year.filter(mnth=> mnth.getMonth() === i))
 
     var YearData = [{
     data : data,
-    category : [['Jan'],['Feb'],['Mar'],['Apr'],['May'],['Jun'],['Jul'],['Aug'],['Sep'],['Oct'],['Nov'],['Dec']]
+    category : ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']
     }]
 
 
-    const [series, setSeries] = useState([{ data: [121, 22, 28] }]);
+    const [series, setSeries] = useState([{name: 'Comments', data: [121, 22, 28] }]);
     const [category] = useState([
     ['zakir'],
     ['shakir'],
@@ -69,14 +70,24 @@ for(var i=0; i<12; i++) { month.push(Year.filter(mnth=> mnth.getMonth() === i))
     // columnWidth: '45%',
     distributed: true,
     borderRadius: 4,
-    horizontal: true,
+    dataLabels: {
+        position: 'top', // top, center, bottom
+      },
     }
     },
     dataLabels: {
-    enabled: true
+    enabled: true,
+    // formatter: function (val) {
+    //     return val + "%";
+    //   },
+    offsetY: -20,
+    style: {
+        fontSize: '12px',
+        colors: ["#304758"]
+        }
     },
     legend: {
-    show: true
+    show: false
     },
     xaxis: {
     categories: category,
@@ -85,8 +96,59 @@ for(var i=0; i<12; i++) { month.push(Year.filter(mnth=> mnth.getMonth() === i))
     colors: colors,
     fontSize: '12px',
     }
-    }
     },
+    position: 'top',
+    axisBorder: {
+        show: false
+      },
+      axisTicks: {
+        show: false
+      },
+      crosshairs: {
+        fill: {
+          type: 'gradient',
+          gradient: {
+            colorFrom: '#D8E3F0',
+            colorTo: '#BED1E6',
+            stops: [0, 100],
+            opacityFrom: 0.4,
+            opacityTo: 0.5,
+          }
+        }
+      },
+      tooltip: {
+        enabled: true,
+      }
+    },
+    yaxis: {
+      axisBorder: {
+        show: false
+      },
+      axisTicks: {
+        show: false,
+      },
+    },
+    yaxis: {
+        labels: {
+        style: {
+        margin: '20px',
+        colors: 'gray',
+        fontSize: '12px',
+        }
+        }
+        },
+        title: {
+            text: 'Monthly of your Video, 2023',
+            floating: true,
+            offsetY: 330,
+            align: 'center',
+            style: {
+              color: '#666'
+            }
+          },
+        tooltip: {
+            theme: 'dark'
+        }
     });
 
     return (
