@@ -47,7 +47,7 @@ const SearchBar = () => {
         var url = document.getElementById('url').value;
         if (url.substring(0, 17) === "https://youtu.be/") {
             video_id = url.split("/")[3].substring(0,11);
-            var key="API_KEY";
+            var key="AIzaSyAcP4VvLjTcqriI1O93YnaBXz4Tcrsrq3M";
             swal("Good Job", "Request Sent to the Server.", "success")
             await fetchData(video_id, key)
         }
