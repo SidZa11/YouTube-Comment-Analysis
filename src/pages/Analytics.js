@@ -9,6 +9,7 @@ import VideoInfoContext from '../context/VideoInfoContext'
 import VideoStatContext from '../context/VideoStatContext'
 import WordCountGraph from '../charts/WordCountGraph'
 import RefreshAnalyticContext from '../context/RefreshAnalyticsContext'
+import PieChart from '../charts/PieChart'
 
 
 const Analytics = () => {
@@ -26,7 +27,7 @@ const [refreshValue, setRefreshValue] = useState(1)
               <RefreshAnalyticContext.Provider value={{refreshValue, setRefreshValue}}>
                 <StepToSearch/>
                 <Statistics />
-                <SimpleBarGraph/>
+                <PieChart />
                 <WordCountGraph />
               </RefreshAnalyticContext.Provider>
             </VideoStatContext.Provider>
