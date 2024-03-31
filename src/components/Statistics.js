@@ -14,19 +14,22 @@ import {
      StatNumber,
      useColorModeValue
 } from '@chakra-ui/react'
-import { IoEyeSharp } from "react-icons/io5";
+import { IoEyeSharp ,IoHappy } from "react-icons/io5";
 import { AiOutlineLike } from "react-icons/ai";
 import { FaComments } from "react-icons/fa6";
+import { RiEmotionUnhappyFill } from "react-icons/ri";
 import VideoInfoContext from '../context/VideoInfoContext'
 import VideoStatContext from '../context/VideoStatContext'
+import SentimentDataContext from '../context/SentimentDataContext';
 function StatsCard(props) {
-    const { title, stat, icon } = props
+    const { title, stat, icon ,bg} = props
     return (
       <Stat
         px={{ base: 2, md: 4 }}
         py={"5"}
         shadow={"xl"}
         border={"1px solid"}
+        bg={bg}
         borderColor={useColorModeValue("gray.800", "gray.500")}
         rounded={"lg"}
       >
@@ -55,6 +58,7 @@ const Statistics = () => {
 
 const {videoInfo} = useContext(VideoInfoContext);
 const {videoStat} = useContext(VideoStatContext);
+const {sentimentData} = useContext(SentimentDataContext);
 
 var PublishedAt;
 var imgUrl;
@@ -119,6 +123,18 @@ return (
           title={"Total Comments"}
           stat={commentCount}
           icon={<FaComments size={"3em"} />}
+        />
+        <StatsCard
+          title={"Total Positive Comments"}
+          bg='green.500'
+          stat={sentimentData["positive_count"]}
+          icon={<IoHappy size={"3em"} />}
+        />
+        <StatsCard
+          title={"Total Negative Comments"}
+          bg='red.400'
+          stat={sentimentData["negative_count"]}
+          icon={<RiEmotionUnhappyFill  size={"3em"} />}
         />
       </SimpleGrid>
     </Box>

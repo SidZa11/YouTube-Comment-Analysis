@@ -16,16 +16,21 @@ import VideoInfoContext from '../context/VideoInfoContext';
 import getVideoStatistics from '../api/getVideoStatistics';
 import VideoStatContext from '../context/VideoStatContext';
 import RefreshAnalyticContext from '../context/RefreshAnalyticsContext';
+import SentimentDataContext from '../context/SentimentDataContext';
+import getSentiment from '../api/getSentiment';
 
 
 const SearchBar = () => {
     const {setCommentData} = useContext(CommentDataContext)
     const{setVideoInfo} = useContext(VideoInfoContext)
     const{setVideoStat} = useContext(VideoStatContext)
+    const{setSentimentData} = useContext(SentimentDataContext)
     const {setRefreshValue} = useContext(RefreshAnalyticContext)
+
     var comment_value;
     var info_value;
     var stat_value;
+    var senti_value;
     const fetchData = async (videoId, key) => {
         try {
             info_value = await getVideoInformation(videoId, key)
@@ -36,6 +41,9 @@ const SearchBar = () => {
 
             comment_value = await getCommentsData(videoId, key);            
             setCommentData(comment_value)
+
+            senti_value = await getSentiment(comment_value);
+            setSentimentData(senti_value)
 
             setRefreshValue(0)
         } catch (error) {

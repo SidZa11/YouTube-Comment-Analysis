@@ -32,8 +32,10 @@ for(var i=0; i<12; i++) { month.push(Year.filter(mnth=> mnth.getMonth() === i))
     const [series, setSeries] = useState([44, 55, 13, 43, 22,44,55,66,77,88,99,22]);
 
     useEffect(() => {
-
-    setSeries( YearData[0]["data"] );
+    setTimeout(()=>{
+      
+      setSeries( YearData[0]["data"] );
+    }, 3000)
     },[series])
 
     const options = {
