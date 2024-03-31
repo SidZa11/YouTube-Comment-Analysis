@@ -127,7 +127,7 @@ return (
         <StatsCard
           title={"Total Positive Comments"}
           bg='green.500'
-          stat={sentimentData["positive_count"]}
+          stat={(sentimentData)? sentimentData["positive_count"]: "-"}
           icon={<IoHappy size={"3em"} />}
         />
         <StatsCard
