@@ -133,7 +133,7 @@ return (
         <StatsCard
           title={"Total Negative Comments"}
           bg='red.400'
-          stat={sentimentData["negative_count"]}
+          stat={(sentimentData)? sentimentData["negative_count"]: "-"}
           icon={<RiEmotionUnhappyFill  size={"3em"} />}
         />
       </SimpleGrid>
